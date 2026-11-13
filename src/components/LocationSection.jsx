@@ -1,18 +1,17 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { MapPin, Phone, MessageCircle, Navigation, Clock, ArrowUpRight } from 'lucide-react';
 
 export default function LocationSection({ onOpenBooking }) {
   return (
-    <section id="location" className="py-24 md:py-36 bg-ivory text-charcoal relative">
+    <section id="location" className="py-24 md:py-32 bg-ivory text-charcoal relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-sand-dark/60">
           <div>
-            <span className="text-xs tracking-[0.25em] font-sans font-semibold text-terracotta uppercase block mb-3">
-              14 — VISIT THE STUDIO
+            <span className="text-xs font-sans font-medium text-terracotta block mb-3">
+              Visit the Studio
             </span>
-            <h2 className="font-serif text-4xl sm:text-6xl font-light text-charcoal">
-              COME PRACTICE <span className="italic font-normal text-forest">WITH US.</span>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-charcoal text-balance">
+              Come practice with us in Adajan.
             </h2>
           </div>
           <p className="max-w-md text-sm sm:text-base font-sans font-light text-charcoal-muted mt-4 md:mt-0">
@@ -20,21 +19,21 @@ export default function LocationSection({ onOpenBooking }) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
-            <div className="bg-sand/40 p-8 rounded-3xl border border-sand-dark/50">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+            <div className="bg-sand/40 p-7 sm:p-8 rounded-3xl border border-sand-dark/50">
               <div className="flex items-start space-x-4 mb-6">
                 <div className="p-3 rounded-2xl bg-terracotta text-ivory shrink-0">
-                  <MapPin className="w-6 h-6" />
+                  <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-sans tracking-widest uppercase font-bold text-terracotta block mb-1">
-                    STUDIO LOCATION
+                  <span className="text-xs font-sans font-medium text-terracotta block mb-0.5">
+                    Studio Location
                   </span>
-                  <h3 className="font-serif text-3xl font-light text-forest">
-                    VED YOGSHALA
+                  <h3 className="font-serif text-2xl sm:text-3xl font-light text-forest">
+                    Ved Yogshala
                   </h3>
-                  <p className="text-sm font-sans text-charcoal-muted mt-2 leading-relaxed">
+                  <p className="text-sm font-sans text-charcoal-muted mt-1 leading-relaxed">
                     Adajan, Surat, Gujarat, India
                   </p>
                 </div>
@@ -46,57 +45,57 @@ export default function LocationSection({ onOpenBooking }) {
                     <Clock className="w-4 h-4" />
                     <span>Practice Schedule:</span>
                   </div>
-                  <span className="font-semibold">Mon – Sat (Morning & Evening Batches)</span>
+                  <span className="font-medium">Mon to Sat (Morning & Evening Batches)</span>
                 </div>
                 <div className="flex items-center justify-between text-charcoal">
                   <span className="text-sage-dark">Lead Guide:</span>
-                  <span className="font-semibold text-terracotta">Ayushi Tomar</span>
+                  <span className="font-medium text-terracotta">Ayushi Tomar</span>
                 </div>
                 <div className="flex items-center justify-between text-charcoal">
                   <span className="text-sage-dark">Formats Available:</span>
-                  <span className="font-semibold">Studio & Virtual Online</span>
+                  <span className="font-medium">Studio & Virtual Online</span>
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <a
                 href="https://maps.google.com/?q=Adajan+Surat+Gujarat"
                 target="_blank"
                 rel="noopener noreferrer"
-                data-cursor="DIRECTIONS"
-                className="group flex items-center justify-center space-x-2 bg-forest hover:bg-forest-light text-ivory py-4 px-5 rounded-2xl text-xs font-sans tracking-wider uppercase font-semibold transition-all shadow-md"
+                data-cursor="Directions"
+                className="group flex items-center justify-center space-x-2 bg-forest hover:bg-forest-light text-ivory py-3.5 px-5 rounded-2xl text-xs font-sans font-medium transition-colors duration-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
               >
-                <Navigation className="w-4 h-4 text-terracotta" />
-                <span>GET DIRECTIONS</span>
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <Navigation className="w-4 h-4 text-terracotta-soft" />
+                <span>Get directions</span>
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
 
               <a
                 href="https://wa.me/919876543210?text=Hello%20Ved%20Yogshala,%20I%20would%20like%20to%20inquire%20about%20yoga%20classes%20in%20Adajan."
                 target="_blank"
                 rel="noopener noreferrer"
-                data-cursor="WHATSAPP"
-                className="group flex items-center justify-center space-x-2 bg-sage hover:bg-sage-dark text-ivory py-4 px-5 rounded-2xl text-xs font-sans tracking-wider uppercase font-semibold transition-all shadow-md"
+                data-cursor="WhatsApp"
+                className="group flex items-center justify-center space-x-2 bg-sage hover:bg-sage-dark text-ivory py-3.5 px-5 rounded-2xl text-xs font-sans font-medium transition-colors duration-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest"
               >
                 <MessageCircle className="w-4 h-4 text-ivory" />
-                <span>WHATSAPP US</span>
+                <span>WhatsApp us</span>
               </a>
 
               <a
                 href="tel:+919876543210"
-                className="group flex items-center justify-center space-x-2 bg-sand hover:bg-sand-dark text-charcoal py-4 px-5 rounded-2xl text-xs font-sans tracking-wider uppercase font-semibold transition-all border border-sand-dark"
+                className="group flex items-center justify-center space-x-2 bg-sand hover:bg-sand-dark text-charcoal py-3.5 px-5 rounded-2xl text-xs font-sans font-medium transition-colors duration-200 border border-sand-dark/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
               >
                 <Phone className="w-4 h-4 text-terracotta" />
-                <span>CALL STUDIO</span>
+                <span>Call studio</span>
               </a>
 
               <button
                 onClick={() => onOpenBooking('Location Booking')}
-                className="group flex items-center justify-center space-x-2 bg-terracotta hover:bg-terracotta-hover text-ivory py-4 px-5 rounded-2xl text-xs font-sans tracking-wider uppercase font-semibold transition-all shadow-md"
+                className="group flex items-center justify-center space-x-2 bg-terracotta hover:bg-terracotta-hover text-ivory py-3.5 px-5 rounded-2xl text-xs font-sans font-medium transition-colors duration-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest"
               >
-                <span>BOOK A SESSION</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <span>Book a session</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
@@ -111,7 +110,7 @@ export default function LocationSection({ onOpenBooking }) {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-full filter saturate-[0.8] contrast-[1.05]"
+              className="w-full h-full filter saturate-[0.85] contrast-[1.02]"
             />
           </div>
         </div>

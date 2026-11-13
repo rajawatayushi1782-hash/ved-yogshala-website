@@ -43,7 +43,7 @@ export default function BreathingExperience() {
 
       osc.start();
       osc.stop(ctx.currentTime + 4);
-    } catch (e) {
+    } catch {
       // Audio fallback
     }
   };
@@ -142,28 +142,25 @@ export default function BreathingExperience() {
   };
 
   return (
-    <section className="py-28 md:py-36 bg-forest-deep text-ivory relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-terracotta/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-sage/10 rounded-full blur-[100px] pointer-events-none" />
-
+    <section className="py-24 md:py-32 bg-forest-deep text-ivory relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10 flex flex-col items-center">
-        <span className="text-xs tracking-[0.3em] font-sans uppercase font-medium text-sage-light mb-3">
-          08 — PAUSE & CENTER
+        <span className="text-xs font-sans font-medium text-sage-light mb-3">
+          Interactive Breathwork
         </span>
 
-        <h2 className="font-serif text-4xl sm:text-6xl font-light tracking-wide mb-3 text-ivory">
-          TAKE A BREATH.
+        <h2 className="font-serif text-4xl sm:text-6xl font-light tracking-tight mb-3 text-ivory text-balance">
+          Take a moment to center.
         </h2>
-        <p className="font-sans text-sm sm:text-base text-ivory/70 font-light mb-10 max-w-md">
-          Take a moment before you continue. Align your mind with your body.
+        <p className="font-sans text-sm sm:text-base text-ivory/75 font-light mb-8 max-w-md">
+          Align your mind with your body before exploring your practice.
         </p>
 
-        <div className="relative my-8 flex items-center justify-center w-72 h-72 sm:w-96 sm:h-96">
+        <div className="relative my-6 flex items-center justify-center w-72 h-72 sm:w-88 sm:h-88">
           <motion.div
             className="absolute rounded-full border border-terracotta/30 bg-terracotta/5"
             animate={{
-              scale: phase === 'INHALE' ? 1.4 : phase === 'EXHALE' ? 0.85 : phase === 'HOLD' ? 1.35 : 1,
-              opacity: phase === 'INHALE' ? 0.8 : phase === 'EXHALE' ? 0.3 : 0.5,
+              scale: phase === 'INHALE' ? 1.35 : phase === 'EXHALE' ? 0.88 : phase === 'HOLD' ? 1.3 : 1,
+              opacity: phase === 'INHALE' ? 0.7 : phase === 'EXHALE' ? 0.3 : 0.45,
             }}
             transition={{
               duration:
@@ -182,8 +179,8 @@ export default function BreathingExperience() {
           <motion.div
             className="absolute rounded-full border border-sage/40 bg-sage/10"
             animate={{
-              scale: phase === 'INHALE' ? 1.25 : phase === 'EXHALE' ? 0.9 : phase === 'HOLD' ? 1.2 : 1,
-              opacity: phase === 'INHALE' ? 0.9 : phase === 'EXHALE' ? 0.4 : 0.6,
+              scale: phase === 'INHALE' ? 1.2 : phase === 'EXHALE' ? 0.92 : phase === 'HOLD' ? 1.18 : 1,
+              opacity: phase === 'INHALE' ? 0.8 : phase === 'EXHALE' ? 0.35 : 0.5,
             }}
             transition={{
               duration:
@@ -200,11 +197,20 @@ export default function BreathingExperience() {
           />
 
           <motion.div
-            className="relative z-10 w-44 h-44 sm:w-56 sm:h-56 rounded-full bg-gradient-to-br from-forest-light via-forest to-forest-deep border border-ivory/30 shadow-2xl flex flex-col items-center justify-center p-4 cursor-pointer"
+            className="relative z-10 w-44 h-44 sm:w-52 sm:h-52 rounded-full bg-forest border border-ivory/30 shadow-md flex flex-col items-center justify-center p-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
             onClick={() => setIsActive(!isActive)}
-            data-cursor={isActive ? 'PAUSE' : 'BREATHE'}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setIsActive(!isActive);
+              }
+            }}
+            tabIndex={0}
+            role="button"
+            aria-label={isActive ? 'Pause breathing exercise' : 'Start breathing exercise'}
+            data-cursor={isActive ? 'Pause' : 'Breathe'}
             animate={{
-              scale: phase === 'INHALE' ? 1.15 : phase === 'EXHALE' ? 0.92 : phase === 'HOLD' ? 1.12 : 1,
+              scale: phase === 'INHALE' ? 1.12 : phase === 'EXHALE' ? 0.94 : phase === 'HOLD' ? 1.08 : 1,
               borderColor: phase === 'INHALE' ? '#C86D51' : phase === 'HOLD' ? '#94A187' : '#FDFBF7',
             }}
             transition={{
@@ -222,23 +228,23 @@ export default function BreathingExperience() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={phase}
-                initial={{ opacity: 0, y: 5 }}
+                initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
+                exit={{ opacity: 0, y: -4 }}
                 className="flex flex-col items-center text-center"
               >
-                <span className="font-serif text-2xl sm:text-3xl tracking-widest text-ivory uppercase font-light">
-                  {phase === 'READY' ? 'BEGIN' : phase}
+                <span className="font-serif text-2xl sm:text-3xl text-ivory font-light">
+                  {phase === 'READY' ? 'Begin' : phase === 'INHALE' ? 'Inhale' : phase === 'HOLD' ? 'Hold' : phase === 'EXHALE' ? 'Exhale' : 'Rest'}
                 </span>
 
                 {isActive && (
-                  <span className="text-[10px] font-sans tracking-[0.2em] text-sage-light uppercase mt-1">
+                  <span className="text-xs font-sans text-sage-light mt-1">
                     {phase === 'INHALE'
-                      ? 'Deep Inflow'
+                      ? 'Deep inflow'
                       : phase === 'HOLD'
-                      ? 'Gentle Stillness'
+                      ? 'Gentle stillness'
                       : phase === 'EXHALE'
-                      ? 'Release & Soften'
+                      ? 'Release & soften'
                       : 'Rest'}
                   </span>
                 )}
@@ -247,20 +253,21 @@ export default function BreathingExperience() {
           </motion.div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
+        <div className="flex flex-wrap items-center justify-center gap-3.5 mt-4">
           <button
             onClick={() => setIsActive(!isActive)}
-            className="px-6 py-3 rounded-full bg-terracotta hover:bg-terracotta-hover text-ivory text-xs font-sans tracking-widest uppercase font-semibold transition-all flex items-center space-x-2 shadow-lg"
+            className="px-6 py-3 rounded-full bg-terracotta hover:bg-terracotta-hover text-ivory text-xs font-sans font-medium transition-colors duration-200 flex items-center space-x-2 shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ivory"
           >
             {isActive ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-            <span>{isActive ? 'PAUSE SESSION' : 'START BREATHING'}</span>
+            <span>{isActive ? 'Pause session' : 'Start breathing'}</span>
           </button>
 
           <button
             onClick={toggleSound}
-            className={`p-3 rounded-full border transition-all ${
-              soundOn ? 'border-terracotta bg-terracotta/20 text-ivory' : 'border-ivory/20 text-ivory/60 hover:text-ivory'
+            className={`p-3 rounded-full border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ivory ${
+              soundOn ? 'border-terracotta bg-terracotta/20 text-ivory' : 'border-ivory/25 text-ivory/70 hover:text-ivory'
             }`}
+            aria-label="Toggle ambient audio tone"
             title="Toggle Ambient Audio Tones"
           >
             {soundOn ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
@@ -272,7 +279,8 @@ export default function BreathingExperience() {
                 setIsActive(false);
                 setCycleCount(0);
               }}
-              className="p-3 rounded-full border border-ivory/20 text-ivory/60 hover:text-ivory transition-all"
+              className="p-3 rounded-full border border-ivory/25 text-ivory/70 hover:text-ivory transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ivory"
+              aria-label="Reset breath counter"
               title="Reset Counter"
             >
               <RotateCcw className="w-4 h-4" />
@@ -280,7 +288,7 @@ export default function BreathingExperience() {
           )}
         </div>
 
-        <div className="flex items-center space-x-2 mt-8 bg-forest-card p-1.5 rounded-full border border-ivory/10 text-xs font-sans">
+        <div className="flex items-center space-x-2 mt-6 bg-forest p-1 rounded-full border border-ivory/10 text-xs font-sans">
           {['BOX', 'CALM', 'DEEP'].map((mode) => (
             <button
               key={mode}
@@ -288,13 +296,13 @@ export default function BreathingExperience() {
                 setSelectedTechnique(mode);
                 setIsActive(false);
               }}
-              className={`px-4 py-2 rounded-full transition-all ${
+              className={`px-4 py-1.5 rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ivory ${
                 selectedTechnique === mode
-                  ? 'bg-ivory text-forest font-semibold shadow-md'
+                  ? 'bg-ivory text-forest font-medium shadow-xs'
                   : 'text-ivory/70 hover:text-ivory'
               }`}
             >
-              {mode}
+              {mode === 'BOX' ? 'Box (4-4-4-4)' : mode === 'CALM' ? 'Calm (4-7-8)' : 'Deep (4-2-5-2)'}
             </button>
           ))}
         </div>
@@ -303,9 +311,9 @@ export default function BreathingExperience() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-6 text-xs font-sans tracking-wider text-sage-light"
+            className="mt-6 text-xs font-sans text-sage-light"
           >
-            COMPLETED BREATH CYCLES: <span className="text-terracotta font-bold text-sm">{cycleCount}</span>
+            Completed breath cycles: <span className="text-terracotta-soft font-semibold text-sm">{cycleCount}</span>
           </motion.div>
         )}
       </div>

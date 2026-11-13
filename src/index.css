@@ -1,53 +1,142 @@
+/* Hallmark · v2.0.0 · theme: vellum · genre: editorial · depth: polish */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V4 · weakest: V, grounded in authentic Indian wellness tradition */
+
+:root {
+  /* Color Tokens - Earthy, Warm, Calming Palette */
+  --color-ivory: #FDFBF7;
+  --color-ivory-dark: #F4EFE6;
+  --color-ivory-muted: #FAF7F0;
+  
+  --color-sand: #EFEBE4;
+  --color-sand-light: #F8F5F0;
+  --color-sand-dark: #E0D8CB;
+  
+  --color-terracotta: #C86D51;
+  --color-terracotta-hover: #B55B40;
+  --color-terracotta-soft: #E8A590;
+  --color-terracotta-light: #F5DCD3;
+  
+  --color-sage: #94A187;
+  --color-sage-light: #D3DDD0;
+  --color-sage-dark: #6E7C62;
+  
+  --color-forest: #1A2E26;
+  --color-forest-deep: #112019;
+  --color-forest-light: #284439;
+  --color-forest-card: #1D332B;
+  
+  --color-charcoal: #222220;
+  --color-charcoal-muted: #52504C;
+  --color-charcoal-light: #736F69;
+
+  /* Decorative tokens */
+  --color-texture-dot: rgba(34, 34, 32, 0.03);
+  --color-line-start: rgba(200, 109, 81, 0.4);
+  --color-line-mid: rgba(148, 161, 135, 0.2);
+
+  /* Typography tokens */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Spacing Scale Tokens */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   html {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    background-color: #FDFBF7;
-    color: #222220;
+    font-family: var(--font-sans);
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
     scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    overflow-x: clip;
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, .font-serif-editorial {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    letter-spacing: -0.02em;
+    font-family: var(--font-serif);
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+
+  /* Accessible instant focus rings across interactive elements */
+  :focus-visible {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 2px;
+    transition: none !important;
+  }
+
+  button:active, a:active {
+    opacity: 0.92;
+  }
+
+  button:disabled, input:disabled, select:disabled, textarea:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar with tokenized colors */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FDFBF7;
+  background: var(--color-ivory);
 }
 ::-webkit-scrollbar-thumb {
-  background: #D3DDD0;
+  background: var(--color-sage-light);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A187;
+  background: var(--color-sage);
 }
 
-/* Subtle paper texture overlay */
+/* Paper texture overlay with tokenized opacity */
 .paper-texture {
-  background-image: radial-gradient(rgba(34, 34, 32, 0.03) 1px, transparent 0);
+  background-image: radial-gradient(var(--color-texture-dot) 1px, transparent 0);
   background-size: 24px 24px;
 }
 
 /* Editorial line decorative accent */
 .editorial-line {
   height: 1px;
-  background: linear-gradient(90deg, rgba(200, 109, 81, 0.4) 0%, rgba(148, 161, 135, 0.2) 50%, transparent 100%);
+  background: linear-gradient(90deg, var(--color-line-start) 0%, var(--color-line-mid) 50%, transparent 100%);
 }
 
-/* Hide scrollbar for clean horizontal carousel */
+/* Clean scrollbar suppression for carousels */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

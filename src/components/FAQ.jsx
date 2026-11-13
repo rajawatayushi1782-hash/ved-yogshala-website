@@ -28,7 +28,7 @@ export default function FAQ({ onOpenBooking }) {
     },
     {
       q: 'How do I book or inquire about a session?',
-      a: 'You can easily request a session by clicking any "Book a Session" button on this website, sending us a direct message on WhatsApp, or giving us a call at our Adajan studio.',
+      a: 'You can easily request a session by clicking any “Book a Session” button on this website, sending us a direct message on WhatsApp, or giving us a call at our Adajan studio.',
     },
     {
       q: 'What should I bring to class?',
@@ -41,37 +41,38 @@ export default function FAQ({ onOpenBooking }) {
   ];
 
   return (
-    <section id="faq" className="py-24 md:py-36 bg-ivory-dark text-charcoal relative">
+    <section id="faq" className="py-24 md:py-32 bg-ivory-dark text-charcoal relative">
       <div className="max-w-4xl mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
-          <span className="text-xs tracking-[0.3em] font-sans font-semibold text-terracotta uppercase block mb-3">
-            13 — FREQUENT QUESTIONS
+          <span className="text-xs font-sans font-medium text-terracotta block mb-3">
+            Frequent Questions
           </span>
-          <h2 className="font-serif text-4xl sm:text-6xl font-light text-charcoal">
-            EVERYTHING YOU <span className="italic font-normal text-forest">NEED TO KNOW.</span>
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-charcoal text-balance">
+            Common questions about practicing with us.
           </h2>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3.5">
           {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
               <div
                 key={idx}
-                className={`rounded-2xl border transition-all duration-300 ${
+                className={`rounded-2xl border transition-colors duration-200 ${
                   isOpen
-                    ? 'bg-ivory border-terracotta/40 shadow-sm'
+                    ? 'bg-ivory border-terracotta/40 shadow-xs'
                     : 'bg-ivory/60 border-sand-dark/50 hover:border-sand-dark'
                 }`}
               >
                 <button
                   onClick={() => setOpenIdx(isOpen ? null : idx)}
-                  className="w-full py-6 px-6 sm:px-8 text-left flex items-center justify-between space-x-4 focus:outline-none"
+                  className="w-full py-5 px-6 sm:px-8 text-left flex items-center justify-between space-x-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta rounded-2xl"
+                  aria-expanded={isOpen}
                 >
                   <span className="font-serif text-xl sm:text-2xl font-light text-charcoal pr-4">
                     {faq.q}
                   </span>
-                  <div className={`p-2 rounded-full transition-colors ${isOpen ? 'bg-terracotta text-ivory' : 'bg-sand text-charcoal'}`}>
+                  <div className={`p-2 rounded-full transition-colors duration-200 shrink-0 ${isOpen ? 'bg-terracotta text-ivory' : 'bg-sand text-charcoal'}`}>
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>
                 </button>
@@ -82,7 +83,7 @@ export default function FAQ({ onOpenBooking }) {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.25 }}
                       className="px-6 sm:px-8 pb-6 text-sm font-sans font-light text-charcoal-muted leading-relaxed border-t border-sand-dark/30 pt-4"
                     >
                       <p>{faq.a}</p>
@@ -99,9 +100,9 @@ export default function FAQ({ onOpenBooking }) {
           <p className="text-xs font-sans text-charcoal-muted mb-6">Ayushi and the Ved Yogshala team are happy to assist you.</p>
           <button
             onClick={() => onOpenBooking('General Inquiry from FAQ')}
-            className="inline-flex items-center space-x-2 bg-forest hover:bg-forest-light text-ivory font-sans text-xs tracking-widest uppercase font-semibold px-6 py-3 rounded-full transition-all"
+            className="inline-flex items-center space-x-2 bg-forest hover:bg-forest-light text-ivory font-sans text-xs font-medium px-6 py-3 rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
           >
-            <span>SEND AN INQUIRY</span>
+            <span>Send an inquiry</span>
           </button>
         </div>
       </div>

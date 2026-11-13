@@ -31,15 +31,15 @@ export default function PhotoJournal() {
   ];
 
   return (
-    <section className="py-24 md:py-36 bg-ivory text-charcoal relative">
+    <section className="py-24 md:py-32 bg-ivory text-charcoal relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-sand-dark/60">
           <div>
-            <span className="text-xs tracking-[0.25em] font-sans font-semibold text-terracotta uppercase block mb-3">
-              12 — VISUAL JOURNAL
+            <span className="text-xs font-sans font-medium text-terracotta block mb-3">
+              Visual Journal
             </span>
-            <h2 className="font-serif text-4xl sm:text-6xl font-light text-charcoal">
-              A DAY AT <span className="italic font-normal text-forest">VED YOGSHALA.</span>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-charcoal text-balance">
+              A day at Ved Yogshala.
             </h2>
           </div>
           <p className="max-w-md text-sm sm:text-base font-sans font-light text-charcoal-muted mt-4 md:mt-0">
@@ -51,23 +51,23 @@ export default function PhotoJournal() {
           {images.map((item, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: idx * 0.1 }}
-              className={`relative rounded-3xl overflow-hidden bg-sand group border border-sand-dark/40 shadow-sm ${item.span}`}
+              transition={{ duration: 0.6, delay: idx * 0.08 }}
+              className={`relative rounded-3xl overflow-hidden bg-sand group border border-sand-dark/40 shadow-xs ${item.span}`}
             >
               <img
                 src={item.src}
                 alt={item.caption}
-                data-cursor="JOURNAL"
-                className="w-full h-full object-cover filter brightness-[0.96] group-hover:scale-105 transition-transform duration-700 ease-out"
+                data-cursor="Journal"
+                className="w-full h-full object-cover filter brightness-[0.96]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/70 via-forest-deep/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
-              <div className="absolute bottom-6 left-6 right-6 text-ivory opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
-                <span className="text-[10px] tracking-[0.2em] font-sans uppercase font-bold text-terracotta bg-ivory px-3 py-1 rounded-full text-charcoal">
-                  ADAJAN STUDIO
+              <div className="absolute bottom-6 left-6 right-6 text-ivory opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="text-xs font-sans font-medium text-forest bg-ivory px-3 py-1 rounded-full inline-block shadow-xs">
+                  Adajan Studio
                 </span>
                 <p className="font-serif text-xl sm:text-2xl font-light mt-2 text-ivory">
                   {item.caption}

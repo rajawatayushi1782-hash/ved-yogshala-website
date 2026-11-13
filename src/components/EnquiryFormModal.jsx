@@ -31,12 +31,12 @@ export default function EnquiryFormModal({ isOpen, onClose, initialPractice = ''
 
     try {
       confetti({
-        particleCount: 70,
-        spread: 60,
+        particleCount: 60,
+        spread: 55,
         origin: { y: 0.6 },
         colors: ['#C86D51', '#94A187', '#1A2E26', '#EFEBE4'],
       });
-    } catch (err) {
+    } catch {
       // Fallback
     }
 
@@ -55,35 +55,35 @@ export default function EnquiryFormModal({ isOpen, onClose, initialPractice = ''
     <AnimatePresence>
       <div className="fixed inset-0 z-50 bg-charcoal/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          initial={{ opacity: 0, scale: 0.98, y: 16 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="bg-ivory rounded-3xl max-w-2xl w-full p-8 sm:p-12 shadow-2xl relative border border-sand-dark my-8 overflow-hidden"
+          exit={{ opacity: 0, scale: 0.98, y: 16 }}
+          className="bg-ivory rounded-3xl max-w-2xl w-full p-7 sm:p-10 shadow-lg relative border border-sand-dark my-8 overflow-hidden"
         >
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 p-2 rounded-full bg-sand hover:bg-sand-dark transition-colors text-charcoal"
+            className="absolute top-6 right-6 p-2 rounded-full bg-sand hover:bg-sand-dark transition-colors duration-200 text-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
             aria-label="Close Modal"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
 
           {!submitted ? (
             <>
-              <span className="text-xs font-sans tracking-[0.3em] font-semibold text-terracotta uppercase block mb-2">
-                VED YOGSHALA &bull; ADAJAN
+              <span className="text-xs font-sans font-medium text-terracotta block mb-1">
+                Ved Yogshala, Adajan
               </span>
-              <h2 className="font-serif text-4xl sm:text-5xl font-light text-forest mb-2">
-                LET'S BEGIN.
+              <h2 className="font-serif text-3xl sm:text-4xl font-light text-forest mb-2">
+                Let’s begin your journey.
               </h2>
-              <p className="text-sm font-sans text-charcoal-muted mb-8">
+              <p className="text-sm font-sans text-charcoal-muted mb-6">
                 Fill in your details below to connect directly with instructor Ayushi Tomar.
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-sans uppercase tracking-wider font-semibold text-charcoal mb-2">
+                    <label className="block text-xs font-sans font-medium text-charcoal mb-1.5">
                       Your Full Name *
                     </label>
                     <input
@@ -92,12 +92,12 @@ export default function EnquiryFormModal({ isOpen, onClose, initialPractice = ''
                       placeholder="e.g. Ananya Patel"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-all"
+                      className="w-full px-4 py-2.5 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-colors duration-200"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-sans uppercase tracking-wider font-semibold text-charcoal mb-2">
+                    <label className="block text-xs font-sans font-medium text-charcoal mb-1.5">
                       Phone / WhatsApp *
                     </label>
                     <input
@@ -106,14 +106,14 @@ export default function EnquiryFormModal({ isOpen, onClose, initialPractice = ''
                       placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-all"
+                      className="w-full px-4 py-2.5 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-colors duration-200"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-sans uppercase tracking-wider font-semibold text-charcoal mb-2">
+                    <label className="block text-xs font-sans font-medium text-charcoal mb-1.5">
                       Email Address
                     </label>
                     <input
@@ -121,36 +121,36 @@ export default function EnquiryFormModal({ isOpen, onClose, initialPractice = ''
                       placeholder="ananya@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-all"
+                      className="w-full px-4 py-2.5 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-colors duration-200"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-sans uppercase tracking-wider font-semibold text-charcoal mb-2">
+                    <label className="block text-xs font-sans font-medium text-charcoal mb-1.5">
                       Age Group
                     </label>
                     <select
                       value={formData.ageGroup}
                       onChange={(e) => setFormData({ ...formData, ageGroup: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-all"
+                      className="w-full px-4 py-2.5 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-colors duration-200"
                     >
                       <option value="Under 25">Under 25</option>
-                      <option value="26-35">26 – 35</option>
-                      <option value="36-50">36 – 50</option>
+                      <option value="26-35">26-35</option>
+                      <option value="36-50">36-50</option>
                       <option value="50+">50+</option>
                     </select>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-sans uppercase tracking-wider font-semibold text-charcoal mb-2">
+                    <label className="block text-xs font-sans font-medium text-charcoal mb-1.5">
                       Primary Focus / Goal
                     </label>
                     <select
                       value={formData.primaryGoal}
                       onChange={(e) => setFormData({ ...formData, primaryGoal: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-all"
+                      className="w-full px-4 py-2.5 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-colors duration-200"
                     >
                       <option value="Flexibility & Strength">Flexibility & Strength</option>
                       <option value="Stress Ease & Calm">Stress Ease & Calm</option>
@@ -161,13 +161,13 @@ export default function EnquiryFormModal({ isOpen, onClose, initialPractice = ''
                   </div>
 
                   <div>
-                    <label className="block text-xs font-sans uppercase tracking-wider font-semibold text-charcoal mb-2">
+                    <label className="block text-xs font-sans font-medium text-charcoal mb-1.5">
                       Preferred Practice
                     </label>
                     <select
                       value={formData.preferredPractice}
                       onChange={(e) => setFormData({ ...formData, preferredPractice: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-all"
+                      className="w-full px-4 py-2.5 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-colors duration-200"
                     >
                       <option value="Hatha Yoga">Hatha Yoga</option>
                       <option value="Vinyasa Flow">Vinyasa Flow</option>
@@ -179,15 +179,15 @@ export default function EnquiryFormModal({ isOpen, onClose, initialPractice = ''
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-sans uppercase tracking-wider font-semibold text-charcoal mb-2">
+                    <label className="block text-xs font-sans font-medium text-charcoal mb-1.5">
                       Format Option
                     </label>
                     <select
                       value={formData.format}
                       onChange={(e) => setFormData({ ...formData, format: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-all"
+                      className="w-full px-4 py-2.5 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-colors duration-200"
                     >
                       <option value="Studio Adajan (In-Person)">Studio Adajan (In-Person)</option>
                       <option value="Live Virtual (Online)">Live Virtual (Online)</option>
@@ -195,13 +195,13 @@ export default function EnquiryFormModal({ isOpen, onClose, initialPractice = ''
                   </div>
 
                   <div>
-                    <label className="block text-xs font-sans uppercase tracking-wider font-semibold text-charcoal mb-2">
+                    <label className="block text-xs font-sans font-medium text-charcoal mb-1.5">
                       Preferred Time
                     </label>
                     <select
                       value={formData.preferredTime}
                       onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-all"
+                      className="w-full px-4 py-2.5 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-colors duration-200"
                     >
                       <option value="Morning Batch">Morning Batch</option>
                       <option value="Evening Batch">Evening Batch</option>
@@ -211,7 +211,7 @@ export default function EnquiryFormModal({ isOpen, onClose, initialPractice = ''
                 </div>
 
                 <div>
-                  <label className="block text-xs font-sans uppercase tracking-wider font-semibold text-charcoal mb-2">
+                  <label className="block text-xs font-sans font-medium text-charcoal mb-1.5">
                     Additional Notes / Questions
                   </label>
                   <textarea
@@ -219,29 +219,29 @@ export default function EnquiryFormModal({ isOpen, onClose, initialPractice = ''
                     placeholder="Share any health considerations or specific timing preferences..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-all"
+                    className="w-full px-4 py-2.5 rounded-xl bg-sand/40 border border-sand-dark/60 focus:border-terracotta focus:bg-ivory outline-none text-sm font-sans transition-colors duration-200"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-terracotta hover:bg-terracotta-hover text-ivory font-sans text-xs tracking-[0.2em] font-semibold uppercase py-4 rounded-full transition-all shadow-xl flex items-center justify-center space-x-2"
+                  className="w-full bg-terracotta hover:bg-terracotta-hover text-ivory font-sans text-xs font-medium py-3.5 rounded-full transition-colors duration-200 shadow-md flex items-center justify-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest"
                 >
-                  <span>START MY JOURNEY</span>
+                  <span>Start my journey</span>
                   <Send className="w-4 h-4" />
                 </button>
               </form>
             </>
           ) : (
-            <div className="text-center py-12">
-              <div className="w-16 h-16 rounded-full bg-sage-light/50 text-forest mx-auto flex items-center justify-center mb-6">
-                <CheckCircle className="w-10 h-10 text-terracotta" />
+            <div className="text-center py-10">
+              <div className="w-14 h-14 rounded-full bg-sage-light/50 text-forest mx-auto flex items-center justify-center mb-5">
+                <CheckCircle className="w-8 h-8 text-terracotta" />
               </div>
-              <h3 className="font-serif text-4xl font-light text-forest mb-2">
-                THANK YOU, {formData.name.toUpperCase()}.
+              <h3 className="font-serif text-3xl font-light text-forest mb-2">
+                Thank you, {formData.name}.
               </h3>
-              <p className="font-sans text-base text-charcoal-muted max-w-md mx-auto mb-8">
-                Your inquiry has been logged. Redirecting you to WhatsApp to dispatch your session details directly to instructor Ayushi Tomar...
+              <p className="font-sans text-sm text-charcoal-muted max-w-md mx-auto mb-6">
+                Your inquiry has been logged. Redirecting you to WhatsApp to dispatch your session details directly to instructor Ayushi Tomar…
               </p>
               <a
                 href={`https://wa.me/919876543210?text=${encodeURIComponent(
@@ -249,10 +249,10 @@ export default function EnquiryFormModal({ isOpen, onClose, initialPractice = ''
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 bg-sage text-ivory px-6 py-3 rounded-full text-xs font-sans tracking-widest font-semibold uppercase shadow-md"
+                className="inline-flex items-center space-x-2 bg-sage hover:bg-sage-dark text-ivory px-6 py-3 rounded-full text-xs font-sans font-medium shadow-sm transition-colors duration-200"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>OPEN WHATSAPP DIRECTLY</span>
+                <span>Open WhatsApp directly</span>
               </a>
             </div>
           )}

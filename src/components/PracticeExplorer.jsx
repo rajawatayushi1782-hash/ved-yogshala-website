@@ -9,8 +9,8 @@ export default function PracticeExplorer({ onOpenBooking }) {
   const practices = [
     {
       id: '01',
-      title: 'HATHA YOGA',
-      tagline: 'Traditional foundations • Breath • Alignment',
+      title: 'Hatha Yoga',
+      tagline: 'Traditional foundations, breath awareness, alignment',
       summary: 'Classic postures held with breath awareness to develop physical stability, balance, and quiet focus.',
       details: [
         'Ideal for beginners and ongoing practitioners wanting alignment mastery.',
@@ -21,8 +21,8 @@ export default function PracticeExplorer({ onOpenBooking }) {
     },
     {
       id: '02',
-      title: 'VINYASA YOGA',
-      tagline: 'Fluid movement • Rhythmic breathing • Energy flow',
+      title: 'Vinyasa Yoga',
+      tagline: 'Fluid movement, rhythmic breathing, energy flow',
       summary: 'Dynamic sequence linking breath directly with movement for cardiovascular vitality and graceful movement.',
       details: [
         'Rhythmic flow sequences for stamina and body awareness.',
@@ -33,8 +33,8 @@ export default function PracticeExplorer({ onOpenBooking }) {
     },
     {
       id: '03',
-      title: 'THERAPEUTIC YOGA',
-      tagline: 'Gentle restoration • Joint mobility • Posture care',
+      title: 'Therapeutic Yoga',
+      tagline: 'Gentle restoration, joint mobility, posture care',
       summary: 'Mindful, slow-paced practice tailored for gentle spinal care, stiffness relief, and stress reduction.',
       details: [
         'Gentle movement adaptations prioritizing joint longevity.',
@@ -45,8 +45,8 @@ export default function PracticeExplorer({ onOpenBooking }) {
     },
     {
       id: '04',
-      title: 'PERSONALIZED ONE-ON-ONE',
-      tagline: 'Tailored sequence • Individual attention • Custom pace',
+      title: 'Personalized One-on-One',
+      tagline: 'Tailored sequence, individual attention, custom pace',
       summary: 'Private sessions curated specifically for your body goals, health history, and schedule.',
       details: [
         'Direct 1-on-1 guidance from Ayushi Tomar in Adajan.',
@@ -57,8 +57,8 @@ export default function PracticeExplorer({ onOpenBooking }) {
     },
     {
       id: '05',
-      title: 'GROUP SESSIONS',
-      tagline: 'Community energy • Guided practice • Shared focus',
+      title: 'Group Sessions',
+      tagline: 'Community energy, guided practice, shared focus',
       summary: 'Group practices fostering motivating communal energy while maintaining personal guidance.',
       details: [
         'Small-batch group environment ensuring individual instructor checks.',
@@ -69,8 +69,8 @@ export default function PracticeExplorer({ onOpenBooking }) {
     },
     {
       id: '06',
-      title: 'ONLINE & OFFLINE FORMATS',
-      tagline: 'Flexible studio • Virtual home guidance',
+      title: 'Online & Offline Formats',
+      tagline: 'Flexible studio and virtual home guidance',
       summary: 'Practice at the Adajan studio or join live interactive online sessions from your home.',
       details: [
         'High-definition live interactive online classes.',
@@ -81,8 +81,8 @@ export default function PracticeExplorer({ onOpenBooking }) {
     },
     {
       id: '07',
-      title: 'MEDITATION & PRANAYAMA',
-      tagline: 'Mindful stillness • Breath mastery • Inner calm',
+      title: 'Meditation & Pranayama',
+      tagline: 'Mindful stillness, breath mastery, inner calm',
       summary: 'Dedicated breath regulation and guided meditation techniques to quiet mental chatter.',
       details: [
         'Authentic pranayama techniques (Nadi Shodhana, Anulom Vilom, Kapalabhati).',
@@ -94,15 +94,15 @@ export default function PracticeExplorer({ onOpenBooking }) {
   ];
 
   return (
-    <section id="practices" className="py-24 md:py-36 bg-ivory text-charcoal relative">
+    <section id="practices" className="py-24 md:py-32 bg-ivory text-charcoal relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-sand-dark/60">
           <div>
-            <span className="text-xs tracking-[0.25em] font-sans font-semibold text-terracotta uppercase block mb-3">
-              03 — OUR OFFERINGS
+            <span className="text-xs font-sans font-medium text-terracotta block mb-3">
+              Our Offerings
             </span>
-            <h2 className="font-serif text-4xl sm:text-6xl font-light text-charcoal">
-              FIND YOUR <span className="italic font-normal text-terracotta">PRACTICE.</span>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-charcoal text-balance">
+              Find your practice pathway.
             </h2>
           </div>
           <p className="max-w-md text-sm sm:text-base font-sans font-light text-charcoal-muted mt-4 md:mt-0">
@@ -110,39 +110,47 @@ export default function PracticeExplorer({ onOpenBooking }) {
           </p>
         </div>
 
-        <div className="space-y-2 relative">
+        <div className="space-y-2 relative" role="list">
           {practices.map((item) => (
-            <motion.div
+            <div
               key={item.id}
+              role="listitem"
+              tabIndex={0}
               onMouseEnter={() => setHoveredPractice(item.image)}
               onMouseLeave={() => setHoveredPractice(null)}
               onClick={() => setSelectedModalPractice(item)}
-              className="group cursor-pointer py-8 px-6 sm:px-8 rounded-2xl border-b border-sand-dark/40 hover:bg-sand/40 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between"
-              data-cursor="DISCOVER"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedModalPractice(item);
+                }
+              }}
+              className="group cursor-pointer py-7 px-6 sm:px-8 rounded-2xl border-b border-sand-dark/40 hover:bg-sand/40 transition-colors duration-200 flex flex-col md:flex-row md:items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
+              data-cursor="Discover"
             >
-              <div className="flex items-start sm:items-center space-x-6 md:space-x-10">
-                <span className="font-serif text-xl sm:text-2xl font-light text-terracotta group-hover:text-forest transition-colors">
+              <div className="flex items-start sm:items-center space-x-6 md:space-x-8">
+                <span className="font-serif text-xl sm:text-2xl font-light text-terracotta group-hover:text-forest transition-colors duration-200">
                   {item.id}
                 </span>
                 <div>
-                  <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-charcoal group-hover:text-forest group-hover:translate-x-2 transition-all duration-300">
+                  <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-light text-charcoal group-hover:text-forest transition-colors duration-200">
                     {item.title}
                   </h3>
-                  <p className="text-xs sm:text-sm font-sans tracking-wide text-charcoal-light font-medium mt-1">
+                  <p className="text-xs sm:text-sm font-sans text-charcoal-light font-normal mt-1">
                     {item.tagline}
                   </p>
                 </div>
               </div>
 
-              <div className="mt-4 md:mt-0 flex items-center space-x-4 self-end md:self-center">
-                <span className="hidden sm:inline-block text-[10px] tracking-[0.2em] font-sans uppercase font-bold text-terracotta opacity-0 group-hover:opacity-100 transition-opacity">
-                  VIEW DETAILS
+              <div className="mt-4 md:mt-0 flex items-center space-x-3 self-end md:self-center">
+                <span className="hidden sm:inline-block text-xs font-sans font-medium text-terracotta opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  View details
                 </span>
-                <div className="w-10 h-10 rounded-full border border-sand-dark group-hover:border-forest group-hover:bg-forest group-hover:text-ivory flex items-center justify-center transition-all">
-                  <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <div className="w-9 h-9 rounded-full border border-sand-dark group-hover:border-forest group-hover:bg-forest group-hover:text-ivory flex items-center justify-center transition-colors duration-200">
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -150,11 +158,11 @@ export default function PracticeExplorer({ onOpenBooking }) {
       <AnimatePresence>
         {hoveredPractice && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.85 }}
-            transition={{ duration: 0.3 }}
-            className="fixed bottom-12 right-12 z-30 w-72 h-48 rounded-2xl overflow-hidden shadow-2xl pointer-events-none hidden lg:block border-2 border-ivory"
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="fixed bottom-12 right-12 z-30 w-72 h-48 rounded-2xl overflow-hidden shadow-xl pointer-events-none hidden lg:block border border-ivory"
           >
             <img
               src={hoveredPractice}
@@ -167,34 +175,32 @@ export default function PracticeExplorer({ onOpenBooking }) {
 
       <AnimatePresence>
         {selectedModalPractice && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <div
             className="fixed inset-0 z-50 bg-charcoal/70 backdrop-blur-md flex items-center justify-center p-6 overflow-y-auto"
             onClick={() => setSelectedModalPractice(null)}
           >
             <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 30, scale: 0.95 }}
+              exit={{ opacity: 0, y: 20, scale: 0.98 }}
               onClick={(e) => e.stopPropagation()}
               className="bg-ivory rounded-3xl max-w-2xl w-full p-8 md:p-10 shadow-2xl relative border border-sand-dark/60 overflow-hidden"
             >
               <button
                 onClick={() => setSelectedModalPractice(null)}
-                className="absolute top-6 right-6 p-2 rounded-full bg-sand hover:bg-sand-dark transition-colors text-charcoal"
+                className="absolute top-6 right-6 p-2 rounded-full bg-sand hover:bg-sand-dark transition-colors duration-200 text-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
+                aria-label="Close Practice Details"
               >
                 <X className="w-6 h-6" />
               </button>
 
-              <span className="text-xs font-sans tracking-[0.25em] font-semibold text-terracotta uppercase block mb-2">
-                PRACTICE {selectedModalPractice.id}
+              <span className="text-xs font-sans font-medium text-terracotta block mb-2">
+                Practice {selectedModalPractice.id}
               </span>
-              <h3 className="font-serif text-4xl sm:text-5xl font-light text-forest mb-2">
+              <h3 className="font-serif text-3xl sm:text-4xl font-light text-forest mb-2">
                 {selectedModalPractice.title}
               </h3>
-              <p className="text-sm font-sans text-sage-dark font-medium uppercase tracking-wider mb-6">
+              <p className="text-xs font-sans text-sage-dark font-medium mb-6">
                 {selectedModalPractice.tagline}
               </p>
 
@@ -206,7 +212,7 @@ export default function PracticeExplorer({ onOpenBooking }) {
                 />
               </div>
 
-              <p className="text-base font-sans text-charcoal-muted leading-relaxed mb-6">
+              <p className="text-sm sm:text-base font-sans text-charcoal-muted leading-relaxed mb-6 font-light">
                 {selectedModalPractice.summary}
               </p>
 
@@ -228,14 +234,14 @@ export default function PracticeExplorer({ onOpenBooking }) {
                     setSelectedModalPractice(null);
                     onOpenBooking(practiceName);
                   }}
-                  className="flex-1 bg-terracotta hover:bg-terracotta-hover text-ivory font-sans text-xs tracking-widest font-semibold uppercase py-4 rounded-full transition-all flex items-center justify-center space-x-2"
+                  className="flex-1 bg-terracotta hover:bg-terracotta-hover text-ivory font-sans text-xs font-medium py-3.5 rounded-full transition-colors duration-200 flex items-center justify-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest whitespace-nowrap"
                 >
-                  <span>ENQUIRE FOR THIS PRACTICE</span>
+                  <span className="whitespace-nowrap">Enquire for this practice</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </button>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </section>

@@ -27,68 +27,67 @@ export default function InstructorSection({ onOpenBooking }) {
   ];
 
   return (
-    <section id="instructor" className="py-24 md:py-36 bg-ivory text-charcoal relative overflow-hidden">
+    <section id="instructor" className="py-24 md:py-32 bg-ivory text-charcoal relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9 }}
+            transition={{ duration: 0.8 }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[3/4] bg-sand border border-sand-dark/50">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[3/4] bg-sand border border-sand-dark/50">
               <img
                 src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000&auto=format&fit=crop"
-                alt="Ayushi Tomar - Lead Yoga Instructor at Ved Yogshala Adajan Surat"
-                data-cursor="GUIDE"
-                className="w-full h-full object-cover filter brightness-[0.97] contrast-[1.02] hover:scale-105 transition-transform duration-1000"
+                alt="Ayushi Tomar, Lead Yoga Instructor at Ved Yogshala Adajan Surat"
+                data-cursor="Guide"
+                className="w-full h-full object-cover filter brightness-[0.97] contrast-[1.02]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/60 via-transparent to-transparent opacity-60" />
 
-              <div className="absolute bottom-8 left-8 right-8 p-6 rounded-2xl bg-ivory/95 backdrop-blur-md border border-ivory/80 shadow-xl">
-                <span className="text-[10px] tracking-[0.25em] font-sans uppercase font-bold text-terracotta block mb-1">
-                  LEAD YOGA GUIDE & FOUNDER
+              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-ivory/95 backdrop-blur-md border border-ivory/80 shadow-lg">
+                <span className="text-xs font-sans font-medium text-terracotta block mb-1">
+                  Lead Yoga Guide & Founder
                 </span>
-                <h3 className="font-serif text-3xl font-light text-forest">
-                  AYUSHI TOMAR
+                <h3 className="font-serif text-2xl sm:text-3xl font-light text-forest">
+                  Ayushi Tomar
                 </h3>
-                <p className="text-xs font-sans text-charcoal-muted mt-1">
-                  Ved Yogshala &bull; Adajan, Surat
+                <p className="text-xs font-sans text-charcoal-muted mt-0.5">
+                  Ved Yogshala, Adajan, Surat
                 </p>
               </div>
             </div>
 
-            <div className="absolute -top-6 -left-6 bg-forest text-ivory p-4 rounded-full shadow-xl hidden md:flex flex-col items-center justify-center w-24 h-24 border border-ivory/20">
+            <div className="absolute -top-4 -left-4 bg-forest text-ivory p-3.5 rounded-full shadow-lg hidden md:flex flex-col items-center justify-center w-20 h-20 border border-ivory/20">
               <span className="font-serif text-xs italic">Authentic</span>
-              <span className="font-sans text-[9px] tracking-widest font-bold uppercase text-sage-light">PRACTICE</span>
+              <span className="font-sans text-[10px] text-sage-light">Practice</span>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9 }}
+            transition={{ duration: 0.8 }}
             className="lg:col-span-7 flex flex-col justify-center"
           >
-            <span className="text-xs tracking-[0.25em] font-sans font-semibold text-terracotta uppercase block mb-3">
-              05 — MEET YOUR GUIDE
+            <span className="text-xs font-sans font-medium text-terracotta block mb-3">
+              Meet Your Guide
             </span>
 
-            <h2 className="font-serif text-4xl sm:text-6xl font-light text-charcoal leading-tight mb-6">
-              MINDFUL DIRECTION FOR <br />
-              <span className="italic font-normal text-forest">YOUR PERSONAL JOURNEY.</span>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-charcoal leading-tight mb-6 text-balance">
+              Mindful direction for your personal journey.
             </h2>
 
             <p className="text-base sm:text-lg font-sans font-light text-charcoal-muted leading-relaxed mb-8">
-              Instructed by <strong className="font-semibold text-charcoal">Ayushi Tomar</strong>, Ved Yogshala provides structured, thoughtful yoga guidance centered around anatomical safety, intentional breath, and accessible practices for everyday life. Ayushi approaches yoga as a personal journey—where every practitioner is encouraged to listen to their body and develop sustainable physical confidence.
+              Instructed by <strong className="font-semibold text-charcoal">Ayushi Tomar</strong>, Ved Yogshala provides structured, thoughtful yoga guidance centered around anatomical safety, intentional breath, and accessible practices for everyday life. Ayushi approaches yoga as a personal journey, where every practitioner is encouraged to listen to their body and develop sustainable physical confidence.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-8">
               {highlights.map((h, i) => (
-                <div key={i} className="p-5 rounded-2xl bg-sand/40 border border-sand-dark/30 hover:border-terracotta/40 transition-colors">
+                <div key={i} className="p-5 rounded-2xl bg-sand/40 border border-sand-dark/40 hover:border-terracotta/40 transition-colors duration-200">
                   <div className="flex items-center space-x-3 mb-2">
                     <div className="p-2 rounded-lg bg-ivory shadow-xs">
                       {h.icon}
@@ -107,11 +106,11 @@ export default function InstructorSection({ onOpenBooking }) {
             <div>
               <button
                 onClick={() => onOpenBooking('Personal Guidance with Ayushi Tomar')}
-                data-cursor="MEET"
-                className="group inline-flex items-center space-x-3 bg-forest hover:bg-forest-light text-ivory font-sans text-xs tracking-[0.2em] uppercase font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-xl"
+                data-cursor="Meet"
+                className="group inline-flex items-center space-x-2.5 bg-forest hover:bg-forest-light text-ivory font-sans text-xs font-medium px-7 py-3.5 rounded-full transition-colors duration-200 shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta whitespace-nowrap"
               >
-                <span>MEET AYUSHI & DISCUSS YOUR GOALS</span>
-                <ArrowRight className="w-4 h-4 text-terracotta transition-transform duration-300 group-hover:translate-x-1" />
+                <span className="whitespace-nowrap">Meet Ayushi and discuss your goals</span>
+                <ArrowRight className="w-4 h-4 text-terracotta-soft transition-transform duration-200 group-hover:translate-x-0.5" />
               </button>
             </div>
 

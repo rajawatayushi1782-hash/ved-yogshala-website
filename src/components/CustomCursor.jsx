@@ -6,11 +6,13 @@ export default function CustomCursor() {
   const [cursorText, setCursorText] = useState('');
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-      setIsTouchDevice(true);
+    // Disable on touch devices or if reduced motion is requested
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || prefersReducedMotion) {
+      setDisabled(true);
       return;
     }
 
@@ -50,26 +52,26 @@ export default function CustomCursor() {
     };
   }, [isVisible]);
 
-  if (isTouchDevice || !isVisible) return null;
+  if (disabled || !isVisible) return null;
 
   return (
     <>
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-50 flex items-center justify-center rounded-full mix-blend-difference"
         animate={{
-          x: mousePosition.x - (isHovered ? 40 : 8),
-          y: mousePosition.y - (isHovered ? 40 : 8),
-          width: isHovered ? 80 : 16,
-          height: isHovered ? 80 : 16,
+          x: mousePosition.x - (isHovered ? 36 : 7),
+          y: mousePosition.y - (isHovered ? 36 : 7),
+          width: isHovered ? 72 : 14,
+          height: isHovered ? 72 : 14,
           backgroundColor: isHovered ? 'rgba(253, 251, 247, 0.95)' : '#C86D51',
         }}
-        transition={{ type: 'spring', damping: 25, stiffness: 300, mass: 0.5 }}
+        transition={{ type: 'spring', damping: 28, stiffness: 320, mass: 0.4 }}
       >
         {isHovered && cursorText && (
           <motion.span
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-[10px] tracking-widest font-sans font-bold uppercase text-charcoal text-center px-1"
+            className="text-xs font-sans font-medium text-charcoal text-center px-1"
           >
             {cursorText}
           </motion.span>
@@ -79,14 +81,14 @@ export default function CustomCursor() {
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-40 rounded-full border border-terracotta/40"
         animate={{
-          x: mousePosition.x - 20,
-          y: mousePosition.y - 20,
-          width: 40,
-          height: 40,
-          scale: isHovered ? 1.5 : 1,
+          x: mousePosition.x - 18,
+          y: mousePosition.y - 18,
+          width: 36,
+          height: 36,
+          scale: isHovered ? 1.4 : 1,
           opacity: isHovered ? 0 : 0.6,
         }}
-        transition={{ type: 'spring', damping: 20, stiffness: 150, mass: 0.8 }}
+        transition={{ type: 'spring', damping: 22, stiffness: 180, mass: 0.7 }}
       />
     </>
   );
